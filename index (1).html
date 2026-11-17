@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Water Home – Simulador</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="phone">
+  <div class="top">
+    <div><span id="house">Smart Water Home</span><small id="clock">--</small></div>
+    <button onclick="go('prof')" aria-label="Ajustes">⚙</button>
+  </div>
+  <div class="toast" id="toast"></div>
+  <div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
+  <div class="main" id="main"></div>
+  <div class="nav" id="nav"></div>
+</div>
+
+<div class="panel">
+  <h3>Panel del simulador</h3>
+  <p>Simula el consumo de una casa durante el día. Los ajustes de la app (cierre automático, horario, tarifa, tema…) están en ⚙ dentro del teléfono.</p>
+
+  <div class="pclock" id="pclock">--:--<small>--</small></div>
+
+  <h5>Velocidad</h5>
+  <div class="seg" id="speeds"></div>
+  <div class="sub" id="speedTxt"></div>
+  <button class="btn gry full" style="margin-top:8px" onclick="skip(3600)">⏩ Adelantar 1 hora</button>
+
+  <h5>Provocar consumo</h5>
+  <div class="pgrid">
+    <button class="btn blu" onclick="startEvent('regadera',true)">🚿 Regadera</button>
+    <button class="btn blu" onclick="startEvent('wc',true)">🚽 Sanitario</button>
+    <button class="btn blu" onclick="startEvent('lavadora',true)">🧺 Lavadora</button>
+    <button class="btn blu" onclick="startEvent('grifo',true)">🚰 Lavabo</button>
+  </div>
+
+  <h5>Fugas</h5>
+  <div class="pgrid">
+    <button class="btn org" onclick="setLeak(0.4)">💧 Goteo</button>
+    <button class="btn red" onclick="setLeak(4)">💦 Fuga mayor</button>
+  </div>
+  <button class="btn grn full" style="margin-top:6px" onclick="setLeak(0)">🔧 Reparar fuga</button>
+
+  <h5>Datos</h5>
+  <div class="pgrid">
+    <button class="btn gry" onclick="resetDay()">↺ Reiniciar día</button>
+    <button class="btn gry" onclick="askClear()">🗑 Borrar todo</button>
+  </div>
+  <div class="sub" style="margin-top:6px" id="saveTxt">Los datos se guardan automáticamente en este navegador.</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
